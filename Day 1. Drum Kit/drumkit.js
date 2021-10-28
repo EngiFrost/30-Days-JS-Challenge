@@ -8,7 +8,17 @@ window.addEventListener('keydown', (event) => {
   audio.play();
 
   key.classList.add('playing');
-  setTimeout(() => {
-    key.classList.remove('playing');
-  }, 100);
+  // setTimeout(() => {
+  //   key.classList.remove('playing');
+  // }, 100); // it doesn't handle css transition!
 });
+
+const keys = document.querySelectorAll('.key');
+keys.forEach((key) => {
+  key.addEventListener('transitionend', removeTransition);
+});
+
+function removeTransition(event) {
+  if (event.propertyName !== 'transform') return; // skip if it is not a transform
+  this.classList.remove('playing'); // this equals to key because removeTransition is key's event handler
+}
