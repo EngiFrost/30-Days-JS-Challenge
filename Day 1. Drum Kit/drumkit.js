@@ -1,4 +1,11 @@
-window.addEventListener('keydown', (event) => {
+window.addEventListener('keydown', playSound);
+
+const keys = document.querySelectorAll('.key');
+keys.forEach((key) => {
+  key.addEventListener('transitionend', removeTransition);
+});
+
+function playSound(event) {
   const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
   const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
 
@@ -11,12 +18,7 @@ window.addEventListener('keydown', (event) => {
   // setTimeout(() => {
   //   key.classList.remove('playing');
   // }, 100); // it doesn't handle css transition!
-});
-
-const keys = document.querySelectorAll('.key');
-keys.forEach((key) => {
-  key.addEventListener('transitionend', removeTransition);
-});
+}
 
 function removeTransition(event) {
   if (event.propertyName !== 'transform') return; // skip if it is not a transform
