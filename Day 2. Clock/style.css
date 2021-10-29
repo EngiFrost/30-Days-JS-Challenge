@@ -38,13 +38,39 @@ body {
 }
 
 .hand {
-  width: 50%;
   height: 6px;
   background: black;
+  border-radius: 50%;
   position: absolute;
   top: 50%;
   transform-origin: 100%; /*it changes the rotation point (default = 50%)*/
   transform: rotate(90deg);
   transition: all 0.05s;
   transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.second-hand {
+  width: 50%;
+}
+
+.minute-hand {
+  width: 40%;
+  position: absolute;
+  left: 10%;
+}
+
+.hour-hand {
+  width: 30%;
+  position: absolute;
+  left: 20%;
+}
+
+.dot {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  top: 46%;
+  left: 45%;
+  background: white;
+  border-radius: 50%;
 }
