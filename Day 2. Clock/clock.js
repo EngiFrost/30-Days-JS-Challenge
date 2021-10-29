@@ -18,6 +18,16 @@ function setDate() {
   const hourDegrees = (hours / 12) * 360 + offset;
   hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 
+  if (seconds == 0) {
+    secondHand.style.transitionDuration = '0s';
+    minuteHand.style.transitionDuration = '0s';
+    hourHand.style.transitionDuration = '0s';
+  } else {
+    secondHand.style.transitionDuration = '0.05s';
+    minuteHand.style.transitionDuration = '0.05s';
+    hourHand.style.transitionDuration = '0.05s';
+  }
+  
   console.log(hours, minutes, seconds);
 }
 
