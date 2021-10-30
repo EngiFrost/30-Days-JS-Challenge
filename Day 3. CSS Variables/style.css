@@ -1,16 +1,16 @@
 :root { /* css variables definition */
-  --base: #ffc600;
   --spacing: 10px;
   --blur: 10px;
+  --base: #ffc600;
 }
 
 img {
-  background: var(--base);
   padding: var(--spacing);
   filter: blur(var(--blur));
+  background: var(--base);
 }
 
-.h1 {
+.hl {
   color: var(--base);
 }
 
