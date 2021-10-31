@@ -64,24 +64,50 @@ const people = [
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+const wereBornIn1500s = inventors.filter((inventor) => inventor.year >= 1500 && inventor.year <= 1599);
+console.table(wereBornIn1500s);
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
+const fullNames = inventors.map((inventor) => `${inventor.first} ${inventor.last}`);
+console.table(fullNames);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+const birthdaySorted = inventors.sort((a, b) => a.year > b.year);
+console.table(birthdaySorted);
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
+const totalYears = inventors.reduce((sum, current) => {
+  return sum + (current.passed - current.year);
+}, 0);
+console.log(totalYears);
 
 // 5. Sort the inventors by years lived
+const ageSorted = inventors.sort((a, b) => a.passed - a.year > b.passed - b.year);
+console.table(ageSorted);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+const category = document.querySelector('.mw-category');
+const links = [...category.querySelectorAll('a')]; // to make an array === Array.from();
+const de = links.map((link) => link.textContent).filter((streetName) => streetName.includes('de')); // then type 'de' in the browser console and see the magic!
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const lastNameSorted = people.sort((a, b) => a.split(', ')[0] > b.split(', ')[0]);
+console.table(lastNameSorted);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+
+const transportation = data.reduce((object, item) => {
+  if (!object[item]) {
+    object[item] = 0;
+  }
+  object[item]++;
+  return object;
+}, {});
+console.log(transportation);
